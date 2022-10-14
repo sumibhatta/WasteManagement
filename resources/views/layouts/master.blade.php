@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote-bs4.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('assets/plugins/dropify/css/dropify.min.css')}}">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
@@ -78,6 +79,7 @@
   <script src="{{ asset('assets/modules/owlcarousel2/dist/owl.carousel.min.js')}}"></script>
   <script src="{{ asset('assets/modules/summernote/summernote-bs4.js')}}"></script>
   <script src="{{ asset('assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
+  <script src="{{ asset('assets/plugins/dropify/js/dropify.min.js')}}"></script>
 
   <!-- Page Specific JS File -->
   <script src="{{ asset('assets/js/page/index.js')}}"></script>
@@ -85,5 +87,6 @@
   <!-- Template JS File -->
   <script src="{{ asset('assets/js/scripts.js')}}"></script>
   <script src="{{ asset('assets/js/custom.js')}}"></script>
+  @yield('scripts')
 </body>
 </html> 

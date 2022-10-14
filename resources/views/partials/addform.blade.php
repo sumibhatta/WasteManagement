@@ -20,8 +20,10 @@
 
                     <!-- Image Starts -->
                     <div class="form-group">
-                      <label>Upload an Image</label>
-                      <input type="file"mame="image" id="image" class="form-control">
+                    <label>Upload an Image</label>
+                    <div class="input-group">
+                           <input class="dropify" name="file" type="file" multiple />
+                      </div>
                     </div>
                     <!-- Image ends -->
                     <!-- Phone Number -->
@@ -75,3 +77,12 @@
                   </div>
                   <!-- Button ENds -->
 </div>
+
+
+@section('scripts')
+
+<script>
+  $('.dropify').dropify();
+</script>
+
+@endsection
