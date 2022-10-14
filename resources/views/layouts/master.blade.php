@@ -72,7 +72,7 @@
   <script src="{{ asset('assets/modules/moment.min.js')}}"></script>
   <script src="{{ asset('assets/js/stisla.js')}}"></script>
   
-  <!-- JS Libraies -->
+  <!-- JS Libraries -->
   <script src="{{ asset('assets/modules/jquery.sparkline.min.js')}}"></script>
   <script src="{{ asset('assets/modules/chart.min.js')}}"></script>
   <script src="{{ asset('assets/modules/owlcarousel2/dist/owl.carousel.min.js')}}"></script>
