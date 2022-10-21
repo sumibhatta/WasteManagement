@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Customer;
+
 class CustomerController extends Controller
 {
     /**
@@ -13,7 +15,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('customer.index');
+        $alldata = Customer::all();
+        $page_title = 'List of Customers';
+        return view('customer.index', compact('alldata','page_title'));
     }
 
     /**
@@ -23,7 +27,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('customer.create');
+        $page_name = 'customer';
+        return view('customer.create', compact('page_name'));
     }
 
     /**
@@ -34,7 +39,25 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required|string',
+            'phone'=>'required|numeric|unique:customers,phone',
+            'email'=>'required|unique:customers,email',
+            'address'=>'required',
+
+        ]);
+
+        Customer:: create([
+            'name'=> $request->name,
+            'phone'=> $request->phone,
+            'email'=> $request->email,
+            'address'=> $request->address,
+
+        ]);
+
+        return redirect()->route('customer.index');
+
+
     }
 
     /**

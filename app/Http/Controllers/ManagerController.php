@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Manager;
+
 class ManagerController extends Controller
 {
     /**
@@ -13,7 +15,9 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        return view('manager.index');
+        $alldata = Manager::all();
+        $page_title = 'List of Managers';
+        return view('manager.index', compact('alldata','page_title'));
     }
 
     /**
@@ -23,7 +27,8 @@ class ManagerController extends Controller
      */
     public function create()
     {
-        return view('manager.create');
+        $page_name = 'manager';
+        return view('manager.create', compact('page_name'));
     }
 
     /**
@@ -34,7 +39,23 @@ class ManagerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required|string',
+            'phone'=>'required|numeric|unique:managers,phone',
+            'email'=>'required|unique:managers,email',
+            'address'=>'required',
+
+        ]);
+
+        Manager:: create([
+            'name'=> $request->name,
+            'phone'=> $request->phone,
+            'email'=> $request->email,
+            'address'=> $request->address,
+
+        ]);
+
+        return redirect()->route('manager.index');
     }
 
     /**

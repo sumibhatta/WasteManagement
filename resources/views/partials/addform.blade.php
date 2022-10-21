@@ -3,6 +3,10 @@
         <div class="card-header justify-content-center">
             <h3>Add a new {{ substr(Route::current()->getName(), 0, -7) }}</h3>
         </div>
+        
+        <form action="{{ route($page_name.'.store') }}" method="post" enctype="multipart/form-data">
+        @csrf
+
         <div class="card-body">
             <!-- Name Starts -->
             <div class="form-group">
@@ -69,5 +73,6 @@
             </div>
         </div>
         <!-- Button ENds -->
+        </form>
     </div>
 </div>

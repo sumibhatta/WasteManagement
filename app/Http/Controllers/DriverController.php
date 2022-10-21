@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Driver;
 
 class DriverController extends Controller
 {
@@ -13,7 +14,9 @@ class DriverController extends Controller
      */
     public function index()
     {
-        return view('driver.index');
+        $alldata = Driver::all();
+        $page_title = 'List of Drivers';
+        return view('driver.index', compact('alldata','page_title'));
     }
 
     /**
@@ -23,7 +26,8 @@ class DriverController extends Controller
      */
     public function create()
     {
-        return view('driver.create');
+        $page_name = 'driver';
+        return view('driver.create', compact('page_name'));
     }
 
     /**
@@ -34,7 +38,23 @@ class DriverController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required|string',
+            'phone'=>'required|numeric|unique:drivers,phone',
+            'email'=>'required|unique:drivers,email',
+            'address'=>'required',
+
+        ]);
+
+        Driver:: create([
+            'name'=> $request->name,
+            'phone'=> $request->phone,
+            'email'=> $request->email,
+            'address'=> $request->address,
+
+        ]);
+
+        return redirect()->route('driver.index');
     }
 
     /**
