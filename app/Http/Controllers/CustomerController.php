@@ -134,6 +134,9 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $itemWithId = Customer::findOrFail($id); 
+
+        $itemWithId->delete();
+        return back();
     }
 }

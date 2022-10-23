@@ -132,6 +132,10 @@ class ManagerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $itemWithId = Manager::findOrFail($id); 
+
+        $itemWithId->delete();
+        return back();
+
     }
 }
