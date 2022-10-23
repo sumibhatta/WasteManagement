@@ -17,7 +17,8 @@ class CustomerController extends Controller
     {
         $alldata = Customer::all();
         $page_title = 'List of Customers';
-        return view('customer.index', compact('alldata','page_title'));
+        $page_name = 'customer';
+        return view('customer.index', compact('alldata','page_title','page_name'));
     }
 
     /**
@@ -79,7 +80,9 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page_name = 'customer';
+        $itemWithId = Customer::findOrFail($id); 
+        return view('customer.edit', compact('itemWithId','page_name'));
     }
 
     /**
@@ -91,7 +94,36 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $itemWithId = Customer::findOrFail($id); 
+
+    if($request->email == $itemWithId->email || $request->phone == $itemWithId->phone){
+        $request->validate([
+            'name'=>'required|string',
+            'phone'=>'required|numeric',
+            'email'=>'required|email',
+            'address'=>'required',
+
+        ]);
+    }
+    else{
+        $request->validate([
+            'name'=>'required|string',
+            'phone'=>'required|numeric|unique:customers,phone',
+            'email'=>'required|unique:customers,email',
+            'address'=>'required',
+
+        ]);
+    }
+
+        $itemWithId-> update([
+            'name'=> $request->name,
+            'phone'=> $request->phone,
+            'email'=> $request->email,
+            'address'=> $request->address,
+
+        ]);
+
+        return redirect()->route('customer.index');
     }
 
     /**

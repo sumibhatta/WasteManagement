@@ -13,6 +13,9 @@
                           <th scope="col">Email Address</th>
                           <th scope="col">Phone Number</th>
                           <th scope="col">Physical Address</th>
+                          <th scope="col">Edit</th>
+                          <th scope="col">Delete</th>
+
                         </tr>
                       </thead>
                       <tbody>
@@ -23,6 +26,9 @@
                           <td>{{$item->email}}</td>
                           <td>{{$item->phone}}</td>
                           <td>{{$item->address}}</td>
+                          <td> <a class="btn btn-primary" href="{{route($page_name.'.edit', $item->id)}}">Edit</a> </td>
+                          <td> <a href="#" class="btn btn-danger">Delete</a> </td>
+
                         </tr>
                         @endforeach
                       </tbody>

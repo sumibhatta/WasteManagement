@@ -16,8 +16,9 @@ class ManagerController extends Controller
     public function index()
     {
         $alldata = Manager::all();
+        $page_name = 'manager';
         $page_title = 'List of Managers';
-        return view('manager.index', compact('alldata','page_title'));
+        return view('manager.index', compact('alldata','page_title','page_name'));
     }
 
     /**
@@ -77,7 +78,9 @@ class ManagerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page_name = 'manager';
+        $itemWithId = Manager::findOrFail($id); 
+        return view('manager.edit', compact('itemWithId','page_name'));
     }
 
     /**
@@ -89,7 +92,36 @@ class ManagerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $itemWithId = Manager::findOrFail($id); 
+
+        if($request->email == $itemWithId->email || $request->phone == $itemWithId->phone){
+            $request->validate([
+                'name'=>'required|string',
+                'phone'=>'required|numeric',
+                'email'=>'required|email',
+                'address'=>'required',
+    
+            ]);
+        }
+        else{
+            $request->validate([
+                'name'=>'required|string',
+                'phone'=>'required|numeric|unique:managers,phone',
+                'email'=>'required|unique:managers,email',
+                'address'=>'required',
+    
+            ]);
+        }
+    
+            $itemWithId-> update([
+                'name'=> $request->name,
+                'phone'=> $request->phone,
+                'email'=> $request->email,
+                'address'=> $request->address,
+    
+            ]);
+    
+            return redirect()->route('manager.index');
     }
 
     /**

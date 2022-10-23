@@ -15,8 +15,9 @@ class DriverController extends Controller
     public function index()
     {
         $alldata = Driver::all();
+        $page_name = 'driver';
         $page_title = 'List of Drivers';
-        return view('driver.index', compact('alldata','page_title'));
+        return view('driver.index', compact('alldata','page_title','page_name'));
     }
 
     /**
@@ -76,7 +77,9 @@ class DriverController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page_name = 'driver';
+        $itemWithId = Driver::findOrFail($id); 
+        return view('driver.edit', compact('itemWithId','page_name'));
     }
 
     /**
@@ -88,7 +91,36 @@ class DriverController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $itemWithId = Driver::findOrFail($id); 
+
+        if($request->email == $itemWithId->email || $request->phone == $itemWithId->phone){
+            $request->validate([
+                'name'=>'required|string',
+                'phone'=>'required|numeric',
+                'email'=>'required|email',
+                'address'=>'required',
+    
+            ]);
+        }
+        else{
+            $request->validate([
+                'name'=>'required|string',
+                'phone'=>'required|numeric|unique:drivers,phone',
+                'email'=>'required|unique:drivers,email',
+                'address'=>'required',
+    
+            ]);
+        }
+    
+            $itemWithId-> update([
+                'name'=> $request->name,
+                'phone'=> $request->phone,
+                'email'=> $request->email,
+                'address'=> $request->address,
+    
+            ]);
+    
+            return redirect()->route('driver.index');
     }
 
     /**
