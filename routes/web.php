@@ -34,9 +34,18 @@ Route::middleware(['auth'])->group(function(){
 require __DIR__.'/auth.php';
 
 
-Route::get('admin/home', function () {
-    return view('admin.home');
-})->middleware(['auth:admin', 'verified'])->name('admin.home');
+// Route::get('admin/home', function () {
+//     return view('admin.home');
+// })->middleware(['auth:admin', 'verified'])->name('admin.home');
+
+Route::middleware(['auth:admin'])->group(function(){
+
+    Route::get('admin/home', [App\Http\Controllers\Admins\HomeController::class, 'index'])->name('admin.home');
+    Route::resource('admin/drivers', \App\Http\Controllers\Admins\DriverController::class, ["names"=> 'admin.driver']);
+    Route::resource('admin/customers', \App\Http\Controllers\Admins\CustomerController::class, ["names"=> 'admin.customer']);
+    
+});
+require __DIR__.'/auth.php';
 
 require __DIR__.'/adminauth.php';
 

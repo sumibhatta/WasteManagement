@@ -1,10 +1,11 @@
 <div class="col-12 col-md-6 col-lg-6 offset-md-2 offset-lg-3 mt-5">
     <div class="card">
         <div class="card-header justify-content-center">
-            <h3>Add a new {{ substr(Route::current()->getName(), 0, -7) }}</h3>
+            <h3>Add a new {{$page_name}}</h3>
+            {{-- <h3>Add a new {{ substr(Route::current()->getName(), 0, -7) }}</h3> --}}
         </div>
         
-        <form action="{{ route($page_name.'.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{route($page_name.'.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <div class="card-body">
