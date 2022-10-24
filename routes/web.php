@@ -32,3 +32,17 @@ Route::middleware(['auth'])->group(function(){
     
 });
 require __DIR__.'/auth.php';
+
+
+Route::get('admin/home', function () {
+    return view('admin.home');
+})->middleware(['auth:admin', 'verified'])->name('admin.home');
+
+require __DIR__.'/adminauth.php';
+
+
+Route::get('driver/home', function () {
+    return view('driver.home');
+})->middleware(['auth:driverlogin', 'verified'])->name('driverlogin.home');
+
+require __DIR__.'/driverauth.php';
