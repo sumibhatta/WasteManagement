@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('title', 'customer')
 
-@section('content')
+@section('admincontent')
 
 @include('admin.partials.viewdata')
 

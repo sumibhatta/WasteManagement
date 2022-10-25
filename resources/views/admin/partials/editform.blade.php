@@ -75,6 +75,24 @@
             </div>
             <!-- Address ENds -->
 
+             <!-- Status Starts -->
+             <div class="form-group">
+                <label>Status</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                    </div>
+                    <select class="custom-select" name="status" id="inputGroupSelect02">
+                        <option selected value="">Select</option>
+                        <option value="0">Pending</option>
+                        <option value="1">Approved</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Status ENds -->
+
             <!-- Button Starts -->
             <div class="row mb-0 form-group">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">

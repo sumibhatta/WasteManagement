@@ -120,6 +120,8 @@ class CustomerController extends Controller
                 'phone'=> $request->phone,
                 'email'=> $request->email,
                 'address'=> $request->address,
+                'status'=> $request->status,
+
     
             ]);
     

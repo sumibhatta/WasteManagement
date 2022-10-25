@@ -17,7 +17,7 @@ class DriverController extends Controller
     public function index()
     {
         $alldata = Driver::all();
-        $page_name = 'driver';
+        $page_name = 'admin.driver';
         $page_title = 'List of Drivers';
         return view('admin.driver.index', compact('alldata','page_title','page_name'));
     }
@@ -46,7 +46,6 @@ class DriverController extends Controller
             'phone'=>'required|numeric|unique:drivers,phone',
             'email'=>'required|unique:drivers,email',
             'address'=>'required',
-
         ]);
 
         Driver:: create([
@@ -54,7 +53,6 @@ class DriverController extends Controller
             'phone'=> $request->phone,
             'email'=> $request->email,
             'address'=> $request->address,
-
         ]);
 
         return redirect()->route('admin.driver.index');
@@ -119,7 +117,7 @@ class DriverController extends Controller
                 'phone'=> $request->phone,
                 'email'=> $request->email,
                 'address'=> $request->address,
-    
+                'status'=> $request->status,
             ]);
     
             return redirect()->route('admin.driver.index');

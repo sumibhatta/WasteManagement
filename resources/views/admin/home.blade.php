@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section ('content')
+@section ('admincontent')
 
 
 <section class="section">

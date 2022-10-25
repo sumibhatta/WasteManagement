@@ -10,7 +10,6 @@
                         class="fas fa-fire"></i><span>Dashboard</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.home') }}">General Dashboard</a></li>
-                    <li><a class="nav-link" href="{{ route('admin.home') }}">Ecommerce Dashboard</a></li>
                 </ul>
             </li>
             <li class="menu-header">USERS</li>
@@ -24,7 +23,7 @@
                             href="{{ route('admin.driver.create') }}"><i class="mr-1 fas fa-plus"></i>Add a Driver</a></li>
                 </ul>
             </li>
-            <li class="dropdown {{ request()->is('admin.customers/*') || request()->is('admin.customers') ? 'active' : '' }}">
+            <li class="dropdown {{ request()->is('admin/customers/*') || request()->is('admin/customers') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i> <span>Customer</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ request()->routeIs('admin.customer.index') ? 'active' : '' }}"><a class="nav-link"

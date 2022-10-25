@@ -1,8 +1,8 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 
-@section('content')
+@section('admincontent')
 
-@include('partials.editform')
+@include('admin.partials.editform')
 
 
 @endsection

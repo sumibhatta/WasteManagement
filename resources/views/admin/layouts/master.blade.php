@@ -50,7 +50,7 @@
 
       <!-- Main Content -->
       <div class="main-content">
-        @yield('content')
+        @yield('admincontent')
       </div>
       <footer class="main-footer">
         <div class="footer-left">

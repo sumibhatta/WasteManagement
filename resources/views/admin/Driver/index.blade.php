@@ -2,7 +2,7 @@
 
 @section('title', 'Driver')
 
-@section('content')
+@section('admincontent')
 
 @include('admin.partials.viewdata')
 

@@ -13,6 +13,7 @@
                             <th scope="col">Email Address</th>
                             <th scope="col">Phone Number</th>
                             <th scope="col">Physical Address</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
 
@@ -26,6 +27,7 @@
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->phone }}</td>
                                 <td>{{ $item->address }}</td>
+                                <td>{{ $item->status}}</td>
                                 <td> <a class="btn btn-primary"
                                         href="{{ route($page_name . '.edit', $item->id) }}">Edit</a> </td>
                                 <td> <a type="button" data-toggle="modal"
