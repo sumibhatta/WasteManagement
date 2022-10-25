@@ -3,104 +3,133 @@
         <div class="card-header justify-content-center">
             <h3>Add a new {{ substr(Route::current()->getName(), 0, -7) }}</h3>
         </div>
-        
-        <form action="{{ route($page_name.'.update', $itemWithId->id) }}" method="post" enctype="multipart/form-data">
-        @csrf
 
-        @method('PUT')
-        <div class="card-body">
-            @if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-            <!-- Name Starts -->
-            <div class="form-group">
-                <label>Name</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-user-circle"></i>
+        <form action="{{ route($page_name . '.update', $itemWithId->id) }}" method="post" enctype="multipart/form-data">
+            @csrf
+
+            @method('PUT')
+            <div class="card-body">
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <!-- Name Starts -->
+                <div class="form-group">
+                    <label>Name</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                        </div>
+                        <input type="text" name="name" id="name" class="form-control"
+                            value="{{ $itemWithId->name }}">
+                    </div>
+                </div>
+                <!-- Name ENds -->
+
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                        </div>
+                        <input type="text" id="phone" name="phone" class="form-control phone-number"
+                            value="{{ $itemWithId->phone }}">
+                    </div>
+                </div>
+                <!-- Phone Number Ends -->
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label>Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                        <input type="email" id="email" name="email"
+                            class="form-control @error('email') is-invalid @enderror" required
+                            value="{{ $itemWithId->email }}">
+                    </div>
+                </div>
+                <!-- Email Ends -->
+
+                <!-- Address Starts -->
+                <div class="form-group">
+                    <label>Address</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                        </div>
+                        <input type="text" id="address" name="address" class="form-control address"
+                            value="{{ $itemWithId->address }}">
+                    </div>
+                </div>
+                <!-- Address ENds -->
+
+                <!-- Status Starts -->
+                <div class="form-group">
+                    <label>Status</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                        </div>
+                        <select class="custom-select" name="status" id="inputGroupSelect02">
+                            <option selected value="">Select</option>
+                            <option value="0">Pending</option>
+                            <option value="1">Approved</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Status ENds -->
+
+                {{-- Garbage Type --}}
+                @if ($page_name == 'admin.customer')
+                    <div class="form-group">
+                        <label>Garbage Type</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-trash-alt"></i>
+                                </div>
+                            </div>
+                            <select id="garbagetype" class="custom-select" name="garbagetype"
+                                class="form-control garbagetype">
+                                <option selected value="">Select</option>
+                                <option value="Household">Household</option>
+                                <option value="Institutional">Institutional</option>
+                                <option value="Bio-Medical">Bio-Medical</option>
+                                <option value="Industry/Factory">Industry/Factory</option>
+                                <option value="Agriculture/Foresty">Agriculture/Foresty</option>
+                                <option value="Others">Others</option>
+                            </select>
                         </div>
                     </div>
-                    <input type="text" name="name" id="name" class="form-control" value="{{ $itemWithId->name }}">
+                @endif
+                {{-- Garbage Type --}}
+
+                <!-- Button Starts -->
+                <div class="row mb-0 form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                        {{ __('Submit') }}
+                    </button>
                 </div>
             </div>
-            <!-- Name ENds -->
-
-            <!-- Phone Number -->
-            <div class="form-group">
-                <label>Phone Number</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                    </div>
-                    <input type="text" id="phone" name="phone" class="form-control phone-number" value="{{$itemWithId->phone}}">
-                </div>
-            </div>
-            <!-- Phone Number Ends -->
-
-            <!-- Email -->
-            <div class="form-group">
-                <label>Email</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                    </div>
-                    <input type="email" id="email" name="email"
-                        class="form-control @error('email') is-invalid @enderror" required value="{{$itemWithId->email}}">
-                </div>
-            </div>
-            <!-- Email Ends -->
-
-            <!-- Address Starts -->
-            <div class="form-group">
-                <label>Address</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-map-marked-alt"></i>
-                        </div>
-                    </div>
-                    <input type="text" id="address" name="address" class="form-control address" value="{{$itemWithId->address}}">
-                </div>
-            </div>
-            <!-- Address ENds -->
-
-             <!-- Status Starts -->
-             <div class="form-group">
-                <label>Status</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-map-marked-alt"></i>
-                        </div>
-                    </div>
-                    <select class="custom-select" name="status" id="inputGroupSelect02">
-                        <option selected value="">Select</option>
-                        <option value="0">Pending</option>
-                        <option value="1">Approved</option>
-                    </select>
-                </div>
-            </div>
-            <!-- Status ENds -->
-
-            <!-- Button Starts -->
-            <div class="row mb-0 form-group">
-                <button type="submit" class="btn btn-primary btn-lg btn-block">
-                    {{ __('Submit') }}
-                </button>
-            </div>
-        </div>
-        <!-- Button ENds -->
+            <!-- Button ENds -->
         </form>
     </div>
 </div>

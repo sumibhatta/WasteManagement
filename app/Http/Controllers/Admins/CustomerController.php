@@ -46,7 +46,7 @@ class CustomerController extends Controller
             'phone'=>'required|numeric|unique:customers,phone',
             'email'=>'required|unique:customers,email',
             'address'=>'required',
-
+            'garbagetype'=>'required',
         ]);
 
         Customer:: create([
@@ -54,6 +54,7 @@ class CustomerController extends Controller
             'phone'=> $request->phone,
             'email'=> $request->email,
             'address'=> $request->address,
+            'garbagetype'=> $request->garbagetype,
 
         ]);
 
@@ -102,6 +103,7 @@ class CustomerController extends Controller
                 'phone'=>'required|numeric',
                 'email'=>'required|email',
                 'address'=>'required',
+                'garbagetype'=>'required',
     
             ]);
         }
@@ -111,6 +113,7 @@ class CustomerController extends Controller
                 'phone'=>'required|numeric|unique:customers,phone',
                 'email'=>'required|unique:customers,email',
                 'address'=>'required',
+                'garbagetype'=>'required',
     
             ]);
         }
@@ -121,6 +124,7 @@ class CustomerController extends Controller
                 'email'=> $request->email,
                 'address'=> $request->address,
                 'status'=> $request->status,
+                'garbagetype'=>$request->garbagetype,
 
     
             ]);

@@ -75,6 +75,30 @@
                 </div>
                 <!-- Address ENds -->
 
+                {{-- Garbage Type --}}
+                @if ($page_name == 'admin.customer')
+                <div class="form-group">
+                    <label>Garbage Type</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                        <select id="garbagetype" class="custom-select" name="garbagetype" class="form-control garbagetype">
+                            <option selected value="">Select</option>
+                            <option value="Household">Household</option>
+                            <option value="Institutional">Institutional</option>
+                            <option value="Bio-Medical">Bio-Medical</option>
+                            <option value="Industry/Factory">Industry/Factory</option>
+                            <option value="Agriculture/Foresty">Agriculture/Foresty</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                </div>
+                @endif
+                {{-- Garbage Type --}}
+
                 <!-- Button Starts -->
                 <div class="row mb-0 form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">

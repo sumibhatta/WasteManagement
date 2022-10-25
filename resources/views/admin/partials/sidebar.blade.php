@@ -6,11 +6,8 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="dropdown {{ request()->routeIs('admin.home') ? 'active' : '' }}">
-                <a href="{{ route('home') }}" class="nav-link has-dropdown"><i
+                <a href="{{ route('admin.home') }}" class="nav-link has"><i
                         class="fas fa-fire"></i><span>Dashboard</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('admin.home') }}">General Dashboard</a></li>
-                </ul>
             </li>
             <li class="menu-header">USERS</li>
             <li class="dropdown {{ request()->is('admin/drivers/*') || request()->is('admin/drivers') ? 'active' : '' }}">
@@ -29,7 +26,7 @@
                     <li class="{{ request()->routeIs('admin.customer.index') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.customer.index') }}"><i class="mr-1 fas fa-list-ol"></i><span>List
                                 Customers</span></a></li>
-                    <li class="{{ request()->routeIs('admin.customer.create') ? 'active' : '' }}"><a class="nav-link"
+                    <li class="{{ request()->routeIs('admin.customer.create') || request()->is('admin/customers/*/create') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.customer.create') }}"><i class="mr-1 fas fa-plus"></i>Add a Customer</a>
                     </li>
                 </ul>
@@ -57,16 +54,6 @@
                     <li class="{{ request()->routeIs('customer.create') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('customer.create') }}"><i class="mr-1 fas fa-plus"></i>Add a Customer</a>
                     </li>
-                </ul>
-            </li>
-            <li class="dropdown {{ request()->is('managers/*') || request()->is('managers') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-cog"></i> <span>Manager</span></a>
-                <ul class="dropdown-menu">
-                    <li class="{{ request()->routeIs('manager.index') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ route('manager.index') }}"><i class="mr-1 fas fa-list-ol"></i>List Managers</a>
-                    </li>
-                    <li class="{{ request()->routeIs('manager.create') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ route('manager.create') }}"><i class="mr-1 fas fa-plus"></i>Add a Manager</a></li>
                 </ul>
             </li>
             {{-- End of Payments --}}
@@ -97,18 +84,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown {{ request()->is('managers/*') || request()->is('managers') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-cog"></i>
-                    <span>Manager</span></a>
-                <ul class="dropdown-menu">
-                    <li class="{{ request()->routeIs('manager.index') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ route('manager.index') }}"><i class="mr-1 fas fa-list-ol"></i>List Managers</a>
-                    </li>
-                    <li class="{{ request()->routeIs('manager.create') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ route('manager.create') }}"><i class="mr-1 fas fa-plus"></i>Add a Manager</a>
-                    </li>
-                </ul>
-            </li>
             {{-- End of Waste Collection --}}
 
              {{-- Statrt of Reports --}}
@@ -133,18 +108,6 @@
                                  Customers</span></a></li>
                      <li class="{{ request()->routeIs('customer.create') ? 'active' : '' }}"><a class="nav-link"
                              href="{{ route('customer.create') }}"><i class="mr-1 fas fa-plus"></i>Add a Customer</a>
-                     </li>
-                 </ul>
-             </li>
-             <li class="dropdown {{ request()->is('managers/*') || request()->is('managers') ? 'active' : '' }}">
-                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-cog"></i>
-                     <span>Manager</span></a>
-                 <ul class="dropdown-menu">
-                     <li class="{{ request()->routeIs('manager.index') ? 'active' : '' }}"><a class="nav-link"
-                             href="{{ route('manager.index') }}"><i class="mr-1 fas fa-list-ol"></i>List Managers</a>
-                     </li>
-                     <li class="{{ request()->routeIs('manager.create') ? 'active' : '' }}"><a class="nav-link"
-                             href="{{ route('manager.create') }}"><i class="mr-1 fas fa-plus"></i>Add a Manager</a>
                      </li>
                  </ul>
              </li>

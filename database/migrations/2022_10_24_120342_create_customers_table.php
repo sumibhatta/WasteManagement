@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->string('address');
-            $table->boolean('status')->default = 0;
+            $table->string('status')->default = 0;
+            $table->string('garbagetype');
             $table->timestamps();
         });
     }

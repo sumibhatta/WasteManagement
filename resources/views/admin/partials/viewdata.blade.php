@@ -14,6 +14,11 @@
                             <th scope="col">Phone Number</th>
                             <th scope="col">Physical Address</th>
                             <th scope="col">Status</th>
+                            @if ($page_name == 'admin.customer')
+                                <th scope="col">Garbage Type</th>
+
+                            @endif
+
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
 
@@ -28,6 +33,9 @@
                                 <td>{{ $item->phone }}</td>
                                 <td>{{ $item->address }}</td>
                                 <td>{{ $item->status}}</td>
+                                @if ($page_name == 'admin.customer')
+                                    <td scope="col">{{$item->garbagetype}}</td>
+                                @endif
                                 <td> <a class="btn btn-primary"
                                         href="{{ route($page_name . '.edit', $item->id) }}">Edit</a> </td>
                                 <td> <a type="button" data-toggle="modal"

@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('content')
+@section('admincontent')
 <!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
