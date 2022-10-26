@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('status')->default = 0;
             $table->string('garbagetype');
+            $table->int('totalpaidamount');
             $table->timestamps();
         });
     }

@@ -46,12 +46,12 @@
             <li class="dropdown {{ request()->is('admin/payments/*') || request()->is('admin/payments') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i> <span>Customer Payments</span></a>
                 <ul class="dropdown-menu">
-                    {{-- <li class="{{ request()->routeIs('admin.payment.index') ? 'active' : '' }}"><a class="nav-link"
+                    <li class="{{ request()->routeIs('admin.payment.index') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.payment.index') }}"><i class="mr-1 fas fa-list-ol"></i><span>List
                                 Payments</span></a></li>
                     <li class="{{ request()->routeIs('admin.payment.create') || request()->is('admin/payments/*/create') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.payment.create') }}"><i class="mr-1 fas fa-plus"></i>Add a Payment</a>
-                    </li> --}}
+                    </li>
                 </ul>
             </li>
             {{-- End of Payments --}}

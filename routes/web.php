@@ -46,6 +46,7 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::resource('admin/drivers', \App\Http\Controllers\Admins\DriverController::class, ["names"=> 'admin.driver']);
     Route::resource('admin/customers', \App\Http\Controllers\Admins\CustomerController::class, ["names"=> 'admin.customer']);
     Route::resource('admin/salary', \App\Http\Controllers\Admins\SalaryController::class, ["names"=> 'admin.salary']);
+    Route::resource('admin/payment', \App\Http\Controllers\Admins\PaymentController::class, ["names"=> 'admin.payment']);
     
 });
 require __DIR__.'/auth.php';
