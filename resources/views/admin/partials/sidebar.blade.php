@@ -35,25 +35,23 @@
             <!-- EOS -->
             {{-- Start of Payments --}}
             <li class="menu-header">Payments</li>
-            <li class="dropdown {{ request()->is('drivers/*') || request()->is('drivers') ? 'active' : '' }}">
-                <a href="{{ route('driver.index') }}" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fas fa-truck"></i> <span>Driver</span></a>
+            <li class="dropdown {{ request()->is('admin/salaries/*') || request()->is('admin/salaries') ? 'active' : '' }}">
+                <a href="{{ route('admin.salary.index') }}" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fas fa-truck"></i> <span>Salary</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ request()->routeIs('driver.index') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ route('driver.index') }}"><i class="mr-1 fas fa-list-ol"></i>List Drivers</a></li>
-                    <li class="{{ request()->routeIs('driver.create') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ route('driver.create') }}"><i class="mr-1 fas fa-plus"></i>Add a Driver</a></li>
+                    <li class="{{ request()->routeIs('admin.salary.index') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.salary.index') }}"><i class="mr-1 fas fa-list-ol"></i>List Salaries</a></li>
                 </ul>
             </li>
-            <li class="dropdown {{ request()->is('customers/*') || request()->is('customers') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i> <span>Customer</span></a>
+            <li class="dropdown {{ request()->is('admin/payments/*') || request()->is('admin/payments') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i> <span>Customer Payments</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ request()->routeIs('customer.index') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ route('customer.index') }}"><i class="mr-1 fas fa-list-ol"></i><span>List
-                                Customers</span></a></li>
-                    <li class="{{ request()->routeIs('customer.create') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ route('customer.create') }}"><i class="mr-1 fas fa-plus"></i>Add a Customer</a>
-                    </li>
+                    {{-- <li class="{{ request()->routeIs('admin.payment.index') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.payment.index') }}"><i class="mr-1 fas fa-list-ol"></i><span>List
+                                Payments</span></a></li>
+                    <li class="{{ request()->routeIs('admin.payment.create') || request()->is('admin/payments/*/create') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.payment.create') }}"><i class="mr-1 fas fa-plus"></i>Add a Payment</a>
+                    </li> --}}
                 </ul>
             </li>
             {{-- End of Payments --}}
