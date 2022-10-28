@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request as Irequest;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Payment;
+use DB;
+
 
 
 class PaymentController extends Controller
@@ -17,7 +21,8 @@ class PaymentController extends Controller
     public function index()
     {
         $alldata = Customer::all();
-        return view('admin.payment.index',compact('alldata'));
+        $allPaymentData = Payment::all();
+        return view('admin.payment.index',compact('alldata','allPaymentData'));
         }
 
     /**
@@ -73,31 +78,37 @@ class PaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $itemWithId = Customer::findOrFail($id); 
+        $data = DB::table('customers')->where('id', $id)->get();
+        $response_as_array = json_decode($data, true);
 
-        if($request->email == $itemWithId->email || $request->phone == $itemWithId->phone){
-            $request->validate([
-                'name'=>'required|string',
-                'garbagetype'=>'required',
+        
+        if( $response_as_array[0]['garbagetype'] == 'Household'){
+            $billAmount = 100;
     
-            ]);
         }
-        else{
-            $request->validate([
-                'name'=>'required|string',
-                'garbagetype'=>'required',
+        else if( $response_as_array[0]['garbagetype'] == 'Institutional'){
+            $billAmount = 200;
     
-            ]);
         }
+        else if( $response_as_array[0]['garbagetype'] == 'Bio-Medical'){
+            $billAmount = 300;
     
-            $itemWithId-> update([
-                'name'=> $request->name,
-                'garbagetype'=>$request->garbagetype,
+        }
+        else if( $response_as_array[0]['garbagetype'] == 'Industry/Factory'){
+            $billAmount = 400;
+    
+        }
+        else if( $response_as_array[0]['garbagetype'] == 'Agriculture/Foresty'){
+            $billAmount = 500;
+    
+        }
+        else if( $response_as_array[0]['garbagetype'] == 'Others'){
+            $billAmount = 500;
+    
+        }
 
-    
-            ]);
-    
-            return redirect()->route('admin.payment.index');
+    DB::table('payments')->insert(['customers_id' => $id, 'month'=>$request->month,'year' => $request->year, 'amount'=> $billAmount, 'paymentstatus'=> 'unpaid']);
+    return redirect()->route('admin.payment.index');
     }
 
     /**

@@ -33,10 +33,16 @@
                                     <td>{{ $item->status }}</td>
                                     <td scope="col">{{ $item->garbagetype }}</td>
                                     <td>{{ $item->updated_at }}</td>
-                                    <td> <a class="btn btn-primary"
-                                            href="{{ route('admin.payment.edit', $item->id) }}">Pay</a> </td>
+                                    @if ($item->status == "0")
+                                    <td> <a class="btn btn-primary disabled" href="{{ route('admin.payment.edit', $item->id) }}">New Bill</a> </td>
+                                    @else
+                                    <td> <a class="btn btn-primary" href="{{ route('admin.payment.edit', $item->id) }}">New Bill</a> </td>
+                                        
+                                    @endif
+
                                 </tr>
                             @endforeach
+                            
                         </tbody>
                     </table>
                 </div>
