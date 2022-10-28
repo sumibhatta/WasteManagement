@@ -8,9 +8,13 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
+    Route::get('welcome', [HomeController::class, 'index'])
+    ->name('welcome');
+
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 

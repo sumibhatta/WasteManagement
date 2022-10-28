@@ -49,7 +49,6 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::resource('admin/payment', \App\Http\Controllers\Admins\PaymentController::class, ["names"=> 'admin.payment']);
     
 });
-require __DIR__.'/auth.php';
 
 require __DIR__.'/adminauth.php';
 

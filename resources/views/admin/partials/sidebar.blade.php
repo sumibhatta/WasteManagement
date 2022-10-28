@@ -50,7 +50,7 @@
                             href="{{ route('admin.payment.index') }}"><i class="mr-1 fas fa-list-ol"></i><span>List
                                 Payments</span></a></li>
                     <li class="{{ request()->routeIs('admin.payment.create') || request()->is('admin/payments/*/create') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ route('admin.payment.create') }}"><i class="mr-1 fas fa-plus"></i>Add a Payment</a>
+                            href="{{ route('admin.payment.create') }}"><i class="mr-1 fas fa-plus"></i>List Bills</a>
                     </li>
                 </ul>
             </li>
