@@ -1,4 +1,4 @@
-<div class="col-12 col-md-12 col-lg-12 offset-lg-1 mt-5">
+<div class="col-12 col-md-12 col-lg-12 mt-5">
     <div class="card">
         <div class="card-header justify-content-center">
             <h3>{{ $page_title }}</h3>
