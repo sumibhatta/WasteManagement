@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('admincontent')
-    <div class="col-12 col-md-8 col-lg-8 offset-md-1 offset-lg-2 mt-5">
+    <div class="col-12 mt-5">
         <div class="card">
             <div class="card-header justify-content-center">
                 <h3>Payments</h3>
