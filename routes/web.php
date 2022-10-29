@@ -25,11 +25,9 @@ Route::get('/', function () {
 // Unsure Where I will use this----------------------------------------------------------------------------------
 Route::middleware(['auth'])->group(function(){
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::resource('/drivers', \App\Http\Controllers\DriverController::class, ["names"=> 'driver']);
-    Route::resource('/customers', \App\Http\Controllers\CustomerController::class, ["names"=> 'customer']);
-    Route::resource('/managers', \App\Http\Controllers\ManagerController::class, ["names"=> 'manager']);
-    
+    Route::get('/home', [App\Http\Controllers\User\HomeController::class, 'index'])->name('home');
+    Route::resource('/drivers', \App\Http\Controllers\User\DriverController::class, ["names"=> 'driver']);
+    Route::resource('/customers', \App\Http\Controllers\User\CustomerController::class, ["names"=> 'customer']);    
 });
 require __DIR__.'/auth.php';
 
